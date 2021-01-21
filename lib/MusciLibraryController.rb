@@ -1,6 +1,7 @@
 
 require "pry"
 class MusicLibraryController
+<<<<<<< HEAD
   attr_accessor :path, :library
 
   def initialize(path="./db/mp3s")
@@ -10,6 +11,20 @@ class MusicLibraryController
   end
 
   def call
+=======
+  attr_accessor :path
+  @@library = [ ]
+  def initialize(path="./db/mp3s")
+    #binding.pry
+    @path = path
+    @@library << MusicImporter.new(path).import
+    binding.pry
+  end
+
+  def call
+    #puts "Welcome to your music library!"
+    #gets unless "exit"
+>>>>>>> 68164ad3b18d4c4d8807be19ba81467602e599e5
     input = gets.strip
     if input != exit
       puts "Welcome to your music library!"
@@ -21,6 +36,7 @@ class MusicLibraryController
       puts "To play a song, enter 'play song'."
       puts "To quit, type 'exit'."
       puts "What would you like to do?"
+<<<<<<< HEAD
 
     case input
       when "list songs"
@@ -109,6 +125,16 @@ class MusicLibraryController
       new_array= Song.all.sort {|a, b| a.name <=> b.name}
       puts "Playing #{new_array[input-1].name} by #{new_array[input-1].artist.name}"
     end
+=======
+    end
+  end
+
+  def list_songs
+  # binding.pry
+    #library = MusicImporter.new(path).import
+    self
+    puts "Hello"
+>>>>>>> 68164ad3b18d4c4d8807be19ba81467602e599e5
   end
 
 
